@@ -31,3 +31,7 @@ node --test todo-store.test.mjs
 ```
 
 测试覆盖新增待办、筛选、切换完成状态、删除和已保存数据的规范化处理。
+
+## 持续集成
+
+GitHub Actions 会在推送到 `main` 和每个 Pull Request 上自动运行 JavaScript 语法检查与自动化测试。

@@ -36,3 +36,4 @@ python3 -m http.server 8000
 - 提交前先运行验证命令并审查 diff。
 - 提交信息使用 Conventional Commits 风格，例如 `feat: add todo filter`。
 - 推送和创建 Pull Request 仅在任务明确要求时执行。
+- GitHub Actions 工作流位于 `.github/workflows/validate.yml`；修改验证命令时同步更新该文件。
