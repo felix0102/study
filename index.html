@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>我的待办清单</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <h1>我的待办清单</h1>
+      <p class="intro">记录要做的事，完成后点击它。</p>
+
+      <form id="todo-form" class="todo-form">
+        <label class="sr-only" for="todo-input">新的待办事项</label>
+        <input
+          id="todo-input"
+          name="todo"
+          type="text"
+          placeholder="例如：完成 Codex 第一课"
+          autocomplete="off"
+          required
+        />
+        <button type="submit">添加</button>
+      </form>
+
+      <div class="filters" aria-label="筛选待办事项">
+        <button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">全部</button>
+        <button class="filter-button" type="button" data-filter="active" aria-pressed="false">未完成</button>
+        <button class="filter-button" type="button" data-filter="completed" aria-pressed="false">已完成</button>
+      </div>
+
+      <p id="empty-state" class="empty-state">还没有待办事项，先添加一条吧。</p>
+      <ul id="todo-list" class="todo-list" aria-live="polite"></ul>
+    </main>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
