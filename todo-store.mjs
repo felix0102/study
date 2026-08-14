@@ -36,6 +36,10 @@ export function filterTodos(todos, filter) {
   return todos;
 }
 
+export function countActiveTodos(todos) {
+  return todos.filter((todo) => !todo.completed).length;
+}
+
 export function toggleTodo(todos, id) {
   return todos.map((todo) =>
     todo.id === id ? { ...todo, completed: !todo.completed } : todo,

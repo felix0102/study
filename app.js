@@ -1,4 +1,5 @@
 import {
+  countActiveTodos,
   createTodo,
   filterTodos,
   normalizeTodos,
@@ -10,6 +11,7 @@ const form = document.querySelector("#todo-form");
 const input = document.querySelector("#todo-input");
 const list = document.querySelector("#todo-list");
 const emptyState = document.querySelector("#empty-state");
+const remainingCount = document.querySelector("#remaining-count");
 const filterButtons = document.querySelectorAll(".filter-button");
 const STORAGE_KEY = "codex-learning-todos";
 
@@ -41,7 +43,9 @@ function replaceTodos(updatedTodos) {
 function renderTodos() {
   list.replaceChildren();
   const visibleTodos = filterTodos(todos, currentFilter);
+  const activeCount = countActiveTodos(todos);
 
+  remainingCount.textContent = `剩余 ${activeCount} 项未完成`;
   emptyState.hidden = visibleTodos.length > 0;
   emptyState.textContent = todos.length === 0
     ? "还没有待办事项，先添加一条吧。"

@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import {
+  countActiveTodos,
   createTodo,
   filterTodos,
   normalizeTodos,
@@ -26,6 +27,11 @@ test("filterTodos returns the requested todos without changing the source", () =
   assert.deepEqual(filterTodos(todos, "active"), [todos[0]]);
   assert.deepEqual(filterTodos(todos, "completed"), [todos[1]]);
   assert.equal(filterTodos(todos, "all"), todos);
+});
+
+test("countActiveTodos returns the number of incomplete todos", () => {
+  assert.equal(countActiveTodos(todos), 1);
+  assert.equal(countActiveTodos([]), 0);
 });
 
 test("toggleTodo changes only the selected todo", () => {
