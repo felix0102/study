@@ -49,3 +49,7 @@ export function toggleTodo(todos, id) {
 export function removeTodo(todos, id) {
   return todos.filter((todo) => todo.id !== id);
 }
+
+export function removeCompletedTodos(todos) {
+  return todos.filter((todo) => !todo.completed);
+}

@@ -6,6 +6,7 @@ import {
   createTodo,
   filterTodos,
   normalizeTodos,
+  removeCompletedTodos,
   removeTodo,
   toggleTodo,
 } from "./todo-store.mjs";
@@ -45,6 +46,11 @@ test("toggleTodo changes only the selected todo", () => {
 test("removeTodo removes only the selected todo", () => {
   assert.deepEqual(removeTodo(todos, "first"), [todos[1]]);
   assert.deepEqual(removeTodo(todos, "unknown"), todos);
+});
+
+test("removeCompletedTodos keeps only incomplete todos", () => {
+  assert.deepEqual(removeCompletedTodos(todos), [todos[0]]);
+  assert.deepEqual(removeCompletedTodos([todos[0]]), [todos[0]]);
 });
 
 test("normalizeTodos ignores invalid saved data and normalizes completion", () => {
