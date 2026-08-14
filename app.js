@@ -3,6 +3,7 @@ import {
   createTodo,
   filterTodos,
   normalizeTodos,
+  removeCompletedTodos,
   removeTodo,
   toggleTodo,
 } from "./todo-store.mjs";
@@ -12,6 +13,7 @@ const input = document.querySelector("#todo-input");
 const list = document.querySelector("#todo-list");
 const emptyState = document.querySelector("#empty-state");
 const remainingCount = document.querySelector("#remaining-count");
+const clearCompletedButton = document.querySelector("#clear-completed");
 const filterButtons = document.querySelectorAll(".filter-button");
 const STORAGE_KEY = "codex-learning-todos";
 
@@ -46,6 +48,7 @@ function renderTodos() {
   const activeCount = countActiveTodos(todos);
 
   remainingCount.textContent = `剩余 ${activeCount} 项未完成`;
+  clearCompletedButton.disabled = activeCount === todos.length;
   emptyState.hidden = visibleTodos.length > 0;
   emptyState.textContent = todos.length === 0
     ? "还没有待办事项，先添加一条吧。"
@@ -102,6 +105,12 @@ form.addEventListener("submit", (event) => {
   saveTodos();
   input.value = "";
   input.focus();
+  renderTodos();
+});
+
+clearCompletedButton.addEventListener("click", () => {
+  replaceTodos(removeCompletedTodos(todos));
+  saveTodos();
   renderTodos();
 });
 
